@@ -3000,43 +3000,56 @@ m.sendMessage(args)
 })
 }
 });
+const aprefix = "F.";
+const dev = ['283580465862934539','456597892245880861'];
 client.on('message', message => {
-  if (!message.content.startsWith(prefix)) return;
-  var args = message.content.split(' ').slice(1);
-  var argresult = args.join(' ');
-  if (message.author.id == 283580465862934539) return;
-
-
-if (message.content.startsWith(prefix + 'playing')) {
-if (message.author.id !== '283580465862934539') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+    var arg = message.content.split(` `).slice(1).join(' ');
+      if (!dev.includes(message.author.id)) return;
+     
+  if (message.content.startsWith(aprefix + 'setg')) {
+    client.user.setGame(arg);
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'setw')) {
+  client.user.setActivity(arg, {type:'WATCHING'});
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'setl')) {
+  client.user.setActivity(arg , {type:'LISTENING'});
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'sets')){
+    client.user.setGame(arg, "https://www.twitch.tv/bot");
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'setname')) { //لتغير اسم البوت
+  client.user.setUsername(arg).then
+      message.channel.send(``)
 } else
-
-if (message.content.startsWith(prefix + 'streem')) {
-if (message.author.id !== '283580465862934539') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setGame(argresult, "http://twitch.tv/y04zgamer");
-    message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+ 
+if (message.content.startsWith(aprefix + 'setavatar')) { //لتغير صورة البوت
+  client.user.setAvatar(arg);
+    message.channel.send(``);
 } else
-
-if (message.content.startsWith(prefix + 'setname')) {
-if (message.author.id !== '283580465862934539') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-  client.user.setUsername(argresult).then
-      message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
-  return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+ 
+if (message.content.startsWith(aprefix + 'setonline')) { //لتغير حالت البوت لي  online
+client.user.setStatus("online")
+    message.channel.send(``);
 } else
-
-if (message.content.startsWith(prefix + 'setavatar')) {
-if (message.author.id !== '283580465862934539') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setAvatar(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+   
+if (message.content.startsWith(aprefix + 'setdnd')) { //~~~ dnd
+client.user.setStatus("dnd")
+    message.channel.send(``);
 } else
-
-
-if (message.content.startsWith(prefix + 'watching')) {
-if (message.author.id !== '283580465862934539') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-    client.user.setActivity(argresult, {type : 'watching'});
- message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
+   
+if (message.content.startsWith(aprefix + 'setidle')) { //~~~ idle
+client.user.setStatus("idle")
+    message.channel.send(``);
+} else
+ 
+if (message.content.startsWith(aprefix + 'setoffline')) { //~~~ offline
+client.user.setStatus("offline")
+    message.channel.send(``);
 }
 });
 client.on('message', async message => {

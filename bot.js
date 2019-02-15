@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const devs = ['283580465862934539'];
+const devs = ['389090790984515594'];
 const db = require('quick.db');
-const premium = ['470896018603376640']
+const premium = ['283580465862934539']
 const client = new Discord.Client();   
 const bot = new Discord.Client();   
 const giphy = require('giphy-api')();    
@@ -27,7 +27,7 @@ const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const sql = require("sqlite");
 const dateFormat = require('dateformat'); 
 const pretty = require('pretty-ms') 
-const prefix = 'F.'; //336
+const prefix = 'F.';
 var table = require('table').table
 var ti={}  
 ,spee={}
@@ -35,7 +35,7 @@ var ti={}
 
 client.on('ready', function(){
     var ms = 60000 ;
-    var setGame = [`${client.guilds.size} Server`,'F.help','Type F.help',`${client.users.size} Members`,'F.inv','By: Abdallah | AbdallahZ'];
+    var setGame = [`${client.guilds.size} Server`,'F.help','Type F.help',`${client.users.size} Members`,'F.inv','By: Abdallah | YT : AbdallahZ'];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -159,7 +159,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『${prefix}يعطيك عقابات قاسية / عقاب 』
 『=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.』
 『welcome يتم الترحيب فى روم باسم』
-『G.setwelcomer <text channel name> لاختيار روم للترحيب』
+『${prefix}setwelcomer <text channel name> لاختيار روم للترحيب』
 『${prefix}voiceonline / لتفعيل روم الفويس اونلاين』
 **
    
@@ -332,81 +332,6 @@ message.channel.send(embed)
 
 
 });
-
-const aprefix = "F.";
-const dev = ['283580465862934539','456597892245880861','445928929060978698'];
-client.on('message', message => {
-    var arg = message.content.split(` `).slice(1).join(' ');
-      if (!dev.includes(message.author.id)) return;
-     
-  if (message.content.startsWith(aprefix + 'setg')) {
-    client.user.setGame(arg);
-      message.channel.send(`تم تغيير حالة اللعب الخاصة بالبوت`)
-  } else
-  if (message.content.startsWith(aprefix + 'setw')) {
-  client.user.setActivity(arg, {type:'WATCHING'});
-      message.channel.send(`تم تغيير حالة المشاهدة الخاصة بالبوت`)
-  } else
-  if (message.content.startsWith(aprefix + 'setl')) {
-  client.user.setActivity(arg , {type:'LISTENING'});
-      message.channel.send(`تم تغيير حالة الاستماع الخاصة بالبوت`)
-  } else
-  if (message.content.startsWith(aprefix + 'sets')){
-    client.user.setGame(arg, "https://www.twitch.tv/FearlessBot");
-      message.channel.send(`تم تغيير تويتش البوت`)
-  } else
-  if (message.content.startsWith(aprefix + 'setname')) { //لتغير اسم البوت
-  client.user.setUsername(arg).then
-      message.channel.send(`تم تغيير اسم البوت`)
-} else
- 
-if (message.content.startsWith(aprefix + 'setavatar')) { //لتغير صورة البوت
-  client.user.setAvatar(arg);
-    message.channel.send(`تم تغيير صورة البوت`);
-} else
- 
-if (message.content.startsWith(aprefix + 'setonline')) { //لتغير حالت البوت لي  online
-client.user.setStatus("online")
-    message.channel.send(`تم تغير الحالة`);
-} else
-   
-if (message.content.startsWith(aprefix + 'setdnd')) { //~~~ dnd
-client.user.setStatus("dnd")
-    message.channel.send(`تم تغيير الحالة`);
-} else
-   
-if (message.content.startsWith(aprefix + 'setidle')) { //~~~ idle
-client.user.setStatus("idle")
-    message.channel.send(`تم تغيير الحالة`);
-} else
- 
-if (message.content.startsWith(aprefix + 'setoffline')) { //~~~ offline
-client.user.setStatus("offline")
-    message.channel.send(`تم تغيير الحالة`);
-}
-});
-client.on('message', async message => {
-  let messageArray = message.content.split(' ');
-  let args = messageArray.slice(1);
-  if(message.content.startsWith(prefix + "invinfo")) {
-    if(!args) return message.reply('**حدد اسم دعوة**');
-    message.guild.fetchInvites().then(i => {
-      let inv = i.get(args[0]);
-      if(!inv) return message.reply(`**لم اقدر على ايجاد ${args}**`);
-      var iNv = new Discord.RichEmbed()
-      .setAuthor(message.author.username,message.author.avatarURL)
-      .setThumbnail(message.author.avatarURL)
-      .addField('# - صاحب الدعوة',inv.inviter,true)
-      .addField('# - روم الدعوة',inv.channel,true)
-      .addField('# - تاريخ انتهاء الدعوة',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
-      .addField('# - تم انشاء الدعوة',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
-      .addField('# - مدة الدعوة',moment(inv.maxAge).format('DD **ساعة** h **يوم**'),true)
-      .addField('# - الاستخدامات',inv.uses || inv.maxUses,true)
-      message.channel.send(iNv);
-    });
-  }
-});
-
 client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
@@ -432,7 +357,7 @@ client.on('message', function(msg) {
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
-            .setTitle('``INFO Fearless Bot`` ')
+            .setTitle('``INFO Galaxy Bot`` ')
             .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
             .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
             .addField('``servers``', [client.guilds.size], true)
@@ -442,7 +367,7 @@ client.on('message', function(msg) {
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
 			      .addField('``My Prefix``' , `[ F. ]` , true)
 			      .addField('``My Language``' , `[ Java Script ]` , true)
-			      .setFooter('By | Abdallah')
+			      .setFooter('By | Baron')
     })
 }
 });
@@ -522,14 +447,14 @@ client.on('message', message => {
 
     language = toTrans[toTrans.length - 2] === 'to' ? toTrans.slice(toTrans.length - 2, toTrans.length)[1].trim() : undefined;
     if (!language) {
-        return message.reply(`Please supply valid agruments.\n**Example** \`G.trans [text] to [language]\``);
+        return message.reply(`Please supply valid agruments.\n**Example** \`F.trans [text] to [language]\``);
     }
     let finalToTrans = toTrans.slice(toTrans.length - toTrans.length, toTrans.length - 2).join(' ');
     translate(finalToTrans, {to: language}).then(res => {
             message.channel.send({embed: {
                 color: 3447003,
                 author: {
-                  name: 'Fearless\'s translator',
+                  name: 'Galaxy\'s translator',
                   icon_url: client.user.avatarURL
                 },
                 fields: [{
@@ -540,7 +465,7 @@ client.on('message', message => {
                 timestamp: new Date(),
                 footer: {
                   icon_url: client.user.avatarURL,
-                  text: "Fearless"
+                  text: "Galaxy"
                 }
             }}
             )
@@ -621,7 +546,7 @@ if (command == "z5rf") {
 });
 
 client.on('message', message => {
-    if (message.content === "F.rooms") {
+    if (message.content === "Frooms") {
         if (message.author.bot) return
                       if (!message.guild) return;
 
@@ -847,8 +772,8 @@ message.channel.send(
 client.on('message', message => {
                 if(message.content === prefix + "inv") {
                     let embed = new Discord.RichEmbed ()
-                    embed.setTitle("**:arrow_right: Invite Fearless Bot!**")
-                    .setURL("https://discordapp.com/api/oauth2/authorize?client_id=545648999940751361&permissions=8&scope=bot");
+                    embed.setTitle("**:arrow_right: Invite Galaxy Bot!**")
+                    .setURL("https://discordapp.com/oauth2/authorize?client_id=435392018693488641&scope=bot&permissions=2146958591");
                    message.channel.sendEmbed(embed);
                   }
 });
@@ -859,7 +784,7 @@ client.on('message', message => {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
-  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/qEPMJgb**")
+  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/2DVwW5f**")
      
      
   message.channel.sendEmbed(embed);
@@ -1547,7 +1472,7 @@ msg.channel.send(embed).then(() => {
          const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**✅ |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type F.mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
         let won = collected.first().author;
@@ -1578,8 +1503,8 @@ if (message.content.startsWith(prefix + 'mypoints')) {
   })
 });
 client.on('message', message => {
-    if(message.content == 'F.vip-servers') {
-             if(!message.author.id === '283580465862934539') return;
+    if(message.content == '^vip-servers') {
+             if(!message.author.id === '434845976050794516') return;
     var gimg;
     var gname;
     var gmemb;
@@ -1627,7 +1552,7 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
             const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**✅ |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type F.mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
             console.log(`[Game] ${collected.first().author} Answered with the correct answer`);
@@ -2017,7 +1942,7 @@ msg.channel.send(embed).then(() => {
                   const sh = new Discord.RichEmbed()
   .setColor("04791c")
 .setDescription('**✅ |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type F.mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
             let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
@@ -2038,9 +1963,9 @@ client.on('guildCreate', guild => {
          const embed = new Discord.RichEmbed()
      .setColor("RED")
      .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/api/oauth2/authorize?client_id=545648999940751361&permissions=8&scope=bot')
+     .setURL('https://discordapp.com/oauth2/authorize?client_id=435392018693488641&scope=bot&permissions=2146958591')
   .setDescription(`**
-  New Server Add Fearless Bot ✅
+  New Server Add Galaxy Bot ✅
 اسم السيرفر: ${guild.name}
 صاحب السيرفر: ${guild.owner}**`);
 client.channels.get("474127377245667328").sendEmbed(embed)
@@ -2049,9 +1974,9 @@ client.on('guildDelete', guild => {
          const embed = new Discord.RichEmbed()
      .setColor("GOLD")
      .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/api/oauth2/authorize?client_id=545648999940751361&permissions=8&scope=bot')
+     .setURL('https://discordapp.com/oauth2/authorize?client_id=435392018693488641&scope=bot&permissions=2146958591')
   .setDescription(`**
-  Server Kicked Fearless Bot :cry:
+  Server Kicked Galaxy Bot :cry:
 اسم السيرفر: ${guild.name}
 صاحب السيرفر: ${guild.owner}**`);
 client.channels.get("474127377245667328").sendEmbed(embed)
@@ -2229,7 +2154,7 @@ msg.channel.send(embed).then(() => {
                   const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**✅ |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type F.mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
             let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
@@ -2406,7 +2331,7 @@ msg.channel.send(embed).then(() => {
                   const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**✅ |Good Job +1P**')
-.setFooter('G.mypoints')
+.setFooter('F.mypoints')
 message.channel.sendEmbed(sh);
             let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
             points[won.id].points++;
@@ -2511,7 +2436,7 @@ var al7arthyCodes2 = ["📙__60%__  **|**  📘__40%__","📙__63%__  **|**  �
 client.on('message', message => {
     if(!message.guild) return;
     if (message.author.bot) return;
-      let id = message.author.id,prefix="G.";//البريفكس
+      let id = message.author.id,prefix="F.";//البريفكس
       if (ti[id] && (new Date).getTime() - ti[id] < 20*1000) {
           let r = (new Date).getTime() - ti[id];
           r = 20*1000 - r;
@@ -3021,30 +2946,7 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 
-const adminprefix = "$vip";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-client.on('message', message => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-  var argresult = message.content.split(` `).slice(1).join(' ');//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-    if (!devs.includes(message.author.id)) return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-    message.reply("**`only for Bot Owner`**")
-if (message.content.startsWith(adminprefix + 'setgame')) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else     
-if (message.content.startsWith(adminprefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
-}
 
-});
 
 client.on("message", message => {
  if (message.content === `${prefix}`) {
@@ -3068,16 +2970,73 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
 if (message.content.startsWith('F.users')){
- if(!message.author.id === '283580465862934539') return;
+ if(!message.author.id === '434263373077544961') return;
 message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
 client.users.forEach(m =>{
 m.sendMessage(args)
 })
 }
 });
+client.on('message', message => {
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id == 410835593451405312) return;
 
 
+if (message.content.startsWith(prefix + 'playing')) {
+if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+} else
 
+if (message.content.startsWith(prefix + 'streem')) {
+if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setGame(argresult, "http://twitch.tv/y04zgamer");
+    message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+} else
+
+if (message.content.startsWith(prefix + 'setname')) {
+if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+  client.user.setUsername(argresult).then
+      message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+  return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+} else
+
+if (message.content.startsWith(prefix + 'setavatar')) {
+if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+} else
+
+
+if (message.content.startsWith(prefix + 'watching')) {
+if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setActivity(argresult, {type : 'watching'});
+ message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
+}
+});
+client.on('message', async message => {
+  let messageArray = message.content.split(' ');
+  let args = messageArray.slice(1);
+  if(message.content.startsWith(prefix + "invinfo")) {
+    if(!args) return message.reply('**حدد اسم دعوة**');
+    message.guild.fetchInvites().then(i => {
+      let inv = i.get(args[0]);
+      if(!inv) return message.reply(`**لم اقدر على ايجاد ${args}**`);
+      var iNv = new Discord.RichEmbed()
+      .setAuthor(message.author.username,message.author.avatarURL)
+      .setThumbnail(message.author.avatarURL)
+      .addField('# - صاحب الدعوة',inv.inviter,true)
+      .addField('# - روم الدعوة',inv.channel,true)
+      .addField('# - تاريخ انتهاء الدعوة',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
+      .addField('# - تم انشاء الدعوة',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
+      .addField('# - مدة الدعوة',moment(inv.maxAge).format('DD **ساعة** h **يوم**'),true)
+      .addField('# - الاستخدامات',inv.uses || inv.maxUses,true)
+      message.channel.send(iNv);
+    });
+  }
+});
 client.on('guildMemberAdd', member => {
     let memberavatar = member.user.avatarURL
     let embed = new Discord.RichEmbed()
@@ -3615,5 +3574,7 @@ client.on("message", (message) => {
         message.channel.send(`** <@${message.mentions.members.first().id}> Unmuted!😀**`);
     }
 })
+
+
 
 client.login(process.env.BOT_TOKEN)

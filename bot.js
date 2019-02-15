@@ -334,7 +334,7 @@ message.channel.send(embed)
 });
 
 const aprefix = "F.";
-const dev = ['283580465862934539','456597892245880861'];
+const dev = ['283580465862934539','456597892245880861','445928929060978698'];
 client.on('message', message => {
     var arg = message.content.split(` `).slice(1).join(' ');
       if (!dev.includes(message.author.id)) return;

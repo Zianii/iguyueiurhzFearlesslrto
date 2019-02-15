@@ -27,7 +27,7 @@ const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const sql = require("sqlite");
 const dateFormat = require('dateformat'); 
 const pretty = require('pretty-ms') 
-const prefix = 'F.';
+const prefix = 'F.'; //336
 var table = require('table').table
 var ti={}  
 ,spee={}
@@ -332,6 +332,81 @@ message.channel.send(embed)
 
 
 });
+
+const aprefix = "F.";
+const dev = ['283580465862934539','456597892245880861'];
+client.on('message', message => {
+    var arg = message.content.split(` `).slice(1).join(' ');
+      if (!dev.includes(message.author.id)) return;
+     
+  if (message.content.startsWith(aprefix + 'setg')) {
+    client.user.setGame(arg);
+      message.channel.send(`تم تغيير حالة اللعب الخاصة بالبوت`)
+  } else
+  if (message.content.startsWith(aprefix + 'setw')) {
+  client.user.setActivity(arg, {type:'WATCHING'});
+      message.channel.send(`تم تغيير حالة المشاهدة الخاصة بالبوت`)
+  } else
+  if (message.content.startsWith(aprefix + 'setl')) {
+  client.user.setActivity(arg , {type:'LISTENING'});
+      message.channel.send(`تم تغيير حالة الاستماع الخاصة بالبوت`)
+  } else
+  if (message.content.startsWith(aprefix + 'sets')){
+    client.user.setGame(arg, "https://www.twitch.tv/FearlessBot");
+      message.channel.send(`تم تغيير تويتش البوت`)
+  } else
+  if (message.content.startsWith(aprefix + 'setname')) { //لتغير اسم البوت
+  client.user.setUsername(arg).then
+      message.channel.send(`تم تغيير اسم البوت`)
+} else
+ 
+if (message.content.startsWith(aprefix + 'setavatar')) { //لتغير صورة البوت
+  client.user.setAvatar(arg);
+    message.channel.send(`تم تغيير صورة البوت`);
+} else
+ 
+if (message.content.startsWith(aprefix + 'setonline')) { //لتغير حالت البوت لي  online
+client.user.setStatus("online")
+    message.channel.send(`تم تغير الحالة`);
+} else
+   
+if (message.content.startsWith(aprefix + 'setdnd')) { //~~~ dnd
+client.user.setStatus("dnd")
+    message.channel.send(`تم تغيير الحالة`);
+} else
+   
+if (message.content.startsWith(aprefix + 'setidle')) { //~~~ idle
+client.user.setStatus("idle")
+    message.channel.send(`تم تغيير الحالة`);
+} else
+ 
+if (message.content.startsWith(aprefix + 'setoffline')) { //~~~ offline
+client.user.setStatus("offline")
+    message.channel.send(`تم تغيير الحالة`);
+}
+});
+client.on('message', async message => {
+  let messageArray = message.content.split(' ');
+  let args = messageArray.slice(1);
+  if(message.content.startsWith(prefix + "invinfo")) {
+    if(!args) return message.reply('**حدد اسم دعوة**');
+    message.guild.fetchInvites().then(i => {
+      let inv = i.get(args[0]);
+      if(!inv) return message.reply(`**لم اقدر على ايجاد ${args}**`);
+      var iNv = new Discord.RichEmbed()
+      .setAuthor(message.author.username,message.author.avatarURL)
+      .setThumbnail(message.author.avatarURL)
+      .addField('# - صاحب الدعوة',inv.inviter,true)
+      .addField('# - روم الدعوة',inv.channel,true)
+      .addField('# - تاريخ انتهاء الدعوة',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
+      .addField('# - تم انشاء الدعوة',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
+      .addField('# - مدة الدعوة',moment(inv.maxAge).format('DD **ساعة** h **يوم**'),true)
+      .addField('# - الاستخدامات',inv.uses || inv.maxUses,true)
+      message.channel.send(iNv);
+    });
+  }
+});
+
 client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
@@ -3000,79 +3075,9 @@ m.sendMessage(args)
 })
 }
 });
-const aprefix = "F.";
-const dev = ['283580465862934539','456597892245880861'];
-client.on('message', message => {
-    var arg = message.content.split(` `).slice(1).join(' ');
-      if (!dev.includes(message.author.id)) return;
-     
-  if (message.content.startsWith(aprefix + 'setg')) {
-    client.user.setGame(arg);
-      message.channel.send(``)
-  } else
-  if (message.content.startsWith(aprefix + 'setw')) {
-  client.user.setActivity(arg, {type:'WATCHING'});
-      message.channel.send(``)
-  } else
-  if (message.content.startsWith(aprefix + 'setl')) {
-  client.user.setActivity(arg , {type:'LISTENING'});
-      message.channel.send(``)
-  } else
-  if (message.content.startsWith(aprefix + 'sets')){
-    client.user.setGame(arg, "https://www.twitch.tv/bot");
-      message.channel.send(``)
-  } else
-  if (message.content.startsWith(aprefix + 'setname')) { //لتغير اسم البوت
-  client.user.setUsername(arg).then
-      message.channel.send(``)
-} else
- 
-if (message.content.startsWith(aprefix + 'setavatar')) { //لتغير صورة البوت
-  client.user.setAvatar(arg);
-    message.channel.send(``);
-} else
- 
-if (message.content.startsWith(aprefix + 'setonline')) { //لتغير حالت البوت لي  online
-client.user.setStatus("online")
-    message.channel.send(``);
-} else
-   
-if (message.content.startsWith(aprefix + 'setdnd')) { //~~~ dnd
-client.user.setStatus("dnd")
-    message.channel.send(``);
-} else
-   
-if (message.content.startsWith(aprefix + 'setidle')) { //~~~ idle
-client.user.setStatus("idle")
-    message.channel.send(``);
-} else
- 
-if (message.content.startsWith(aprefix + 'setoffline')) { //~~~ offline
-client.user.setStatus("offline")
-    message.channel.send(``);
-}
-});
-client.on('message', async message => {
-  let messageArray = message.content.split(' ');
-  let args = messageArray.slice(1);
-  if(message.content.startsWith(prefix + "invinfo")) {
-    if(!args) return message.reply('**حدد اسم دعوة**');
-    message.guild.fetchInvites().then(i => {
-      let inv = i.get(args[0]);
-      if(!inv) return message.reply(`**لم اقدر على ايجاد ${args}**`);
-      var iNv = new Discord.RichEmbed()
-      .setAuthor(message.author.username,message.author.avatarURL)
-      .setThumbnail(message.author.avatarURL)
-      .addField('# - صاحب الدعوة',inv.inviter,true)
-      .addField('# - روم الدعوة',inv.channel,true)
-      .addField('# - تاريخ انتهاء الدعوة',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
-      .addField('# - تم انشاء الدعوة',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
-      .addField('# - مدة الدعوة',moment(inv.maxAge).format('DD **ساعة** h **يوم**'),true)
-      .addField('# - الاستخدامات',inv.uses || inv.maxUses,true)
-      message.channel.send(iNv);
-    });
-  }
-});
+
+
+
 client.on('guildMemberAdd', member => {
     let memberavatar = member.user.avatarURL
     let embed = new Discord.RichEmbed()

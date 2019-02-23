@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const devs = ['389090790984515594'];
+const devs = ['283580465862934539'];
 const db = require('quick.db');
 const premium = ['283580465862934539']
 const client = new Discord.Client();   
@@ -367,7 +367,7 @@ client.on('message', function(msg) {
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
 			      .addField('``My Prefix``' , `[ F. ]` , true)
 			      .addField('``My Language``' , `[ Java Script ]` , true)
-			      .setFooter('By | Baron')
+			      .setFooter('By | Abdallah')
     })
 }
 });
@@ -705,7 +705,7 @@ let embed = new Discord.RichEmbed()
 .setFooter(message.author.username, message.author.avatarURL)
 
 message.channel.send({embed});
-    if (!message) return message.reply('**ضع المينشان بشكل صحيح  ❌ **')
+    if (!message) return message.reply('**ضع المنشن بشكل صحيح  ❌ **')
 
 }
 });
@@ -3628,6 +3628,8 @@ client.on('guildMemberAdd', member => {
     var role = member.guild.roles.find('name', 'Member');
     member.addRole(role)
     });
+
+
 
 
 //Fearless

@@ -3531,12 +3531,8 @@ client.on("message", msg =>{
 
 
 
-// Package's
-const fs = require("fs"); // fs Package //
-// Database
 let prefixes = JSON.parse(fs.readFileSync("./prefix.json", "utf8"));
-// سوي ملف وسميه prefix.json
-// البرفكس الاساسي هو !
+
  
 client.on("message", message => {
     if (!message.channel.guild) return;

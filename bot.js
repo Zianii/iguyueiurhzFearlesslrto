@@ -3530,8 +3530,7 @@ client.on("message", msg =>{
 }});
 
 
-const Discord = require("discord.js");
-const client = new Discord.Client();
+
 // Package's
 const fs = require("fs"); // fs Package //
 // Database
